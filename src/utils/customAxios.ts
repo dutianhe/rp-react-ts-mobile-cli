@@ -1,23 +1,15 @@
 import axios from 'axios'
-import { httpParam } from '@/interface/HttpParam'
+import {AxiosParam} from '@/interface/AxiosParam'
 
-const CustomAxios = axios.create({
+const customAxios = axios.create({
     timeout: 6000, // request timeout  设置请求超时时间
     responseType: 'json',
     withCredentials: true, // 是否允许带cookie
     headers: {
+        /* eslint-disable-next-line */
         'Content-Type': 'application/json;charset=utf-8'
     }
 })
-
-const http = function({ method, url, data}:httpParam) : Promise<any>{
-    return CustomAxios({
-        method,
-        url,
-        data
-    })
-}
-
 
 
 /**
@@ -27,7 +19,7 @@ const http = function({ method, url, data}:httpParam) : Promise<any>{
  * @module
  * @return
  */
-CustomAxios.interceptors.request.use(
+customAxios.interceptors.request.use(
     (config) => {
         return config
     },
@@ -44,7 +36,7 @@ CustomAxios.interceptors.request.use(
  * @module
  * @return
  */
-CustomAxios.interceptors.response.use(
+customAxios.interceptors.response.use(
     (response) => {
         return response
     },
@@ -62,7 +54,7 @@ export const Http = {
      * @module
      * @return
      */
-    post: (params:httpParam) => http({ method: 'post', ...params }),
+    post: ({url, data}: AxiosParam): Promise<any> => customAxios.post(url, data),
 
 
     /**
@@ -72,7 +64,7 @@ export const Http = {
      * @module
      * @return
      */
-    get: (params:httpParam) => http({ method: 'get', ...params })
+    get: ({url, data}: AxiosParam): Promise<any> => customAxios.get(url, data),
 }
 
-export default CustomAxios
+export default customAxios

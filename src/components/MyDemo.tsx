@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {connect} from "react-redux"
 import {addCounter} from "@/store/slices/demo"
-import  fetchGain from '@/store/api/gain'
+import  {fetchGain} from '@/store/api/gain'
 const MyDemo: React.FC = (props:any) => {
-    const [date, setDate] = useState('')
+    // const [date, setDate] = useState('')
 
     const {gainData,loading,counter} = props;
     const {addCounterHandler,getGainHandler} = props;
@@ -41,9 +41,13 @@ const mapDispatchToProps = (dispatch:any) => ({
     },
 
     getGainHandler() {
-        dispatch(fetchGain())
+        dispatch(fetchGain({
+            placeIds:"140"
+        }))
     },
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MyDemo)
+
+
 
 

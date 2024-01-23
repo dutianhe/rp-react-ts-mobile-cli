@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import fetchGain from '@/store/api/gain'
+import {fetchGain} from '@/store/api/gain'
 
 const gainSlice = createSlice({
     name: 'gainSlice',
@@ -16,7 +16,7 @@ const gainSlice = createSlice({
     // 额外的 reducer 执行异步操作
     extraReducers: {
         // 计算属性名 [computedNames]
-        [fetchGain.pending.toString()](state, action) {
+        [fetchGain.pending.toString()](state) {
             state.loading=true;
             console.log('fetchAsyncList 执行中还未有结果')
         },
@@ -25,7 +25,7 @@ const gainSlice = createSlice({
             state.data = payload.resData;
             console.log('fetchAsyncList 拿到结果了', payload)
         },
-        [fetchGain.rejected.toString()](state, action) {
+        [fetchGain.rejected.toString()](state) {
             state.loading=false;
             console.log('fetchAsyncList 错误了')
         }

@@ -1,7 +1,17 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { Http } from '@/utils/customAxios'
-import { API } from '@/store/api/api'
+import {createAsyncThunk} from '@reduxjs/toolkit'
+import {Http} from '@/utils/customAxios'
+import {API} from '@/store/api/api'
 
+
+/** 返回数据类型 **/
+interface ResponseData {
+
+}
+
+/** 请求数据类型 **/
+interface RequestData {
+    placeIds: string
+}
 
 /**
  * @author <dutianhe@ruubypay.com>
@@ -10,7 +20,7 @@ import { API } from '@/store/api/api'
  * @module
  * @return
  */
-export default  createAsyncThunk(
+export const fetchGain = createAsyncThunk<ResponseData[], RequestData>(
     /**
      * 一个字符串类型的 action 名称，用于在 Redux 中识别该 action。
      * 该名称通常包含操作名称和状态
@@ -28,15 +38,15 @@ export default  createAsyncThunk(
      * 性是用于传递额外参数的对象
      *
      */
-    async (arg, { dispatch, getState, extra }) => {
+    async (arg, {dispatch, getState, extra}) => {
         // 异步操作函数，必须返回一个 Promise
-        const { data } = await Http.post({
+        const {data} = await Http.post({
             url: API.gain,
             data: {
                 'cityCode': '1101',
                 'platformCode': 'YTX',
                 'deviceCode': 'IOS',
-                'placeIds': '140,178,241',
+                'placeIds': arg.placeIds,
                 'businessType': '01'
             }
         })
