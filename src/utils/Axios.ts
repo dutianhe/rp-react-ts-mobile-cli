@@ -1,6 +1,14 @@
 import axios from 'axios'
-import {AxiosParam} from '@/interface/AxiosParam'
+import {ApiBaseType} from '@/interface/ApiBaseType'
 
+/**
+ * @author dutianhe@ruubypay.com
+ * @date 2024-01-25 16:24:30
+ * @description axios 封装
+ * @module customAxios.post
+ * @module customAxios.get
+ * @return axios
+ */
 const customAxios = axios.create({
     timeout: 6000, // request timeout  设置请求超时时间
     responseType: 'json',
@@ -11,14 +19,7 @@ const customAxios = axios.create({
     }
 })
 
-
-/**
- * @author <dutianhe@ruubypay.com>
- * @date 2024-01-17 17:26:32
- * @description 请求拦截器
- * @module
- * @return
- */
+/** 请求拦截器 **/
 customAxios.interceptors.request.use(
     (config) => {
         return config
@@ -28,14 +29,7 @@ customAxios.interceptors.request.use(
     }
 )
 
-
-/**
- * @author <dutianhe@ruubypay.com>
- * @date 2024-01-17 17:26:43
- * @description 响应拦截器
- * @module
- * @return
- */
+/** 响应拦截器 **/
 customAxios.interceptors.response.use(
     (response) => {
         return response
@@ -49,22 +43,22 @@ export const Http = {
 
     /**
      * @author dutianhe@ruubypay.com
-     * @date 2024-01-15 11:34:55
-     * @description
+     * @date 2024-01-25 16:33:00
+     * @description axios post
      * @module
-     * @return
+     * @return Promise
      */
-    post: ({url, data}: AxiosParam): Promise<any> => customAxios.post(url, data),
+    post: ({url, data}: ApiBaseType): Promise<any> => customAxios.post(url, data),
 
 
     /**
      * @author dutianhe@ruubypay.com
-     * @date 2024-01-15 11:34:55
-     * @description
+     * @date 2024-01-25 16:33:00
+     * @description axios get
      * @module
-     * @return
+     * @return Promise
      */
-    get: ({url, data}: AxiosParam): Promise<any> => customAxios.get(url, data),
+    get: ({url, data}: ApiBaseType): Promise<any> => customAxios.get(url, data),
 }
 
 export default customAxios

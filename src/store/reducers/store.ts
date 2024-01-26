@@ -1,12 +1,27 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import demoReducer from '@/store/slices/demo'
-import gainReducer from '@/store/slices/gain'
+import { combineReducers, configureStore, Reducer} from '@reduxjs/toolkit'
+import counterSlice from '@/components/MyDemo/features/counterSlice'
+import gainSlice from '@/store/features/gainSlice'
 
-/** combineReducers 将多个 reducer 函数合成 **/
-const rootReducer = combineReducers({
-    demoReducer,
-    gainReducer
+
+/**
+ * @author dutianhe@ruubypay.com
+ * @date 2024-01-26 15:27:02
+ * @description 导入 Reducer
+ * @module
+ * @return Reducer
+ */
+const rootReducer:Reducer = combineReducers({
+    counterSlice,
+    gainSlice
 })
+
+
+
+
+
+
+
+
 
 
 const store = configureStore({

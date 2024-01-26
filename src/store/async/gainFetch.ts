@@ -1,11 +1,12 @@
 import {createAsyncThunk} from '@reduxjs/toolkit'
-import {Http} from '@/utils/customAxios'
-import {API} from '@/store/api/api'
+import {Http} from '@/utils/Axios'
+import {API} from '@/store/async/api'
+import {BaseResponseData} from "@/interface/ApiBaseType";
 
 
-/** 返回数据类型 **/
-interface ResponseData {
-
+/** 定义接口返回数据类型 **/
+interface ResponseData extends BaseResponseData{
+    resData:object
 }
 
 /** 请求数据类型 **/
@@ -14,13 +15,13 @@ interface RequestData {
 }
 
 /**
- * @author <dutianhe@ruubypay.com>
+ * @author dutianhe@ruubypay.com
  * @date 2024-01-18 13:57:43
  * @description 网络接口请求
  * @module
  * @return
  */
-export const fetchGain = createAsyncThunk<ResponseData[], RequestData>(
+export const gainFetch = createAsyncThunk<ResponseData[], RequestData>(
     /**
      * 一个字符串类型的 action 名称，用于在 Redux 中识别该 action。
      * 该名称通常包含操作名称和状态
@@ -39,6 +40,7 @@ export const fetchGain = createAsyncThunk<ResponseData[], RequestData>(
      *
      */
     async (arg, {dispatch, getState, extra}) => {
+        console.log(dispatch, getState, extra)
         // 异步操作函数，必须返回一个 Promise
         const {data} = await Http.post({
             url: API.gain,
