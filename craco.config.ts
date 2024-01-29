@@ -3,7 +3,7 @@ const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
 import packageJSON from "./package.json"
 const GenerateConfigWebpackPlugin = require('generate-deployment-config-webpack-plugin-by-react')
-
+const VConsolePlugin = require('vconsole-webpack-plugin')
 
 /**
  * @author dutianhe@ruubypay.com
@@ -12,22 +12,29 @@ const GenerateConfigWebpackPlugin = require('generate-deployment-config-webpack-
  * @module
  * @return object
  */
+let plugins = [
+    new GenerateConfigWebpackPlugin({
+        // 插件选项配置
+        projectName:packageJSON.name,
+        env: argv.mode,
+
+    },{
+        outDir: `target/${argv.mode}/${packageJSON.name}`
+    })
+]
+if(argv.mode !=="release"){
+    plugins.push(
+        new VConsolePlugin({
+            enable: true,
+        })
+    )
+}
 module.exports = {
     webpack: {
         alias: {
             '@': path.resolve(__dirname, 'src'),
         },
-        plugins: [
-            // 实例化并添加插件到数组中
-            new GenerateConfigWebpackPlugin({
-                // 插件选项配置
-                projectName:packageJSON.name,
-                env: argv.mode,
-
-            },{
-                outDir: `target/${argv.mode}/${packageJSON.name}`
-            }),
-        ],
+        plugins,
         configure: (webpackConfig: any, {env, paths, mode} : any) => {
             console.log("argv", argv.mode)
             console.log("env", env)

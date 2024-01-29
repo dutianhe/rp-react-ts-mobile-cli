@@ -49,7 +49,8 @@
     "@types/react-redux": "^7.1.26",
     "cross-env": "^7.0.3",
     "generate-deployment-config-webpack-plugin-by-react": "^1.0.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vconsole-webpack-plugin": "^1.8.0"
   },
   "homepage": ".",
   "postcss": {
