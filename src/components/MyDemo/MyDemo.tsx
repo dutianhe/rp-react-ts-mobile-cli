@@ -3,6 +3,7 @@ import {connect} from "react-redux"
 import {addCounter} from "./features/counterSlice"
 import {gainFetch} from '@/store/async/gainFetch'
 import styles from "./MyDemo.module.sass"
+import checkImg from "@/assets/images/checked.png"
 const MyDemo: React.FC = (props:any) => {
     const [date, setDate] = useState('')
 
@@ -32,6 +33,7 @@ const MyDemo: React.FC = (props:any) => {
             </p>
 
             <p>
+                <img src={checkImg} />
                 <span> 当前日期：{date} </span>
                 <button onClick={() => setDate((new Date()).toDateString())}>设置日期</button>
             </p>

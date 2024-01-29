@@ -5017,6 +5017,11 @@ functions-have-names@^1.2.3:
   resolved "https://registry.npmmirror.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
 
+generate-deployment-config-webpack-plugin-by-react@^1.0.0:
+  version "1.0.0"
+  resolved "https://nexus.ruubypay.net/repository/npm-internal/generate-deployment-config-webpack-plugin-by-react/-/generate-deployment-config-webpack-plugin-by-react-1.0.0.tgz#ba34479a46edc40d1f60a2df21aeffb33eb54613"
+  integrity sha512-r9mnTDVVmwm+94vyFZ/ZgKzeEsC+BR5bjbJgN/2owWG3LbTlUXWHXFzDVKUQlNVUAIlNW5mILr/fArWX5yoqkg==
+
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.npmmirror.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"

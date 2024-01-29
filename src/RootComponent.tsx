@@ -14,7 +14,7 @@ const RootComponent: React.FC = () => {
                             <Route
                                 key={i}
                                 path={item.path}
-                                element={ < item.component /> }
+                                element={ <item.component /> }
                             />
                         )
                     })
