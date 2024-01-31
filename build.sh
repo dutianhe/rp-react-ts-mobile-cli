@@ -9,15 +9,15 @@ npm -v
 set -e
 
 #echo "--- install dependencies ---"
-npm install
+yarn install
 #echo "\n"
 #echo "--- clean target folder... ---"
 rm -rf target
 #echo "\n"
 #echo "--- start to build... ---"
-  npm run build:release
-  npm run build:test
-  npm run build:debug
+  yarn run build:release
+  yarn run build:test
+  yarn run build:debug
 
 #echo "\n"
 #echo "--- build success!!! ---"

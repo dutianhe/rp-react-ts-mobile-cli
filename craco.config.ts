@@ -2,9 +2,10 @@
 const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
 import packageJSON from "./package.json"
+
 const GenerateConfigWebpackPlugin = require('generate-deployment-config-webpack-plugin-by-react')
 const VConsolePlugin = require('vconsole-webpack-plugin')
-
+const pxtorem = require('postcss-pxtorem')
 /**
  * @author dutianhe@ruubypay.com
  * @date 2024-01-29 15:31:38
@@ -12,20 +13,24 @@ const VConsolePlugin = require('vconsole-webpack-plugin')
  * @module
  * @return object
  */
-let plugins = [
-    new GenerateConfigWebpackPlugin({
-        // 插件选项配置
-        projectName:packageJSON.name,
-        env: argv.mode,
-
-    },{
-        outDir: `target/${argv.mode}/${packageJSON.name}`
-    })
-]
-if(argv.mode !=="release"){
+let plugins = []
+console.log("argv.mode ", argv.mode)
+if (argv.mode !== "release") {
     plugins.push(
         new VConsolePlugin({
             enable: true,
+        })
+    )
+}
+if (argv.mode) {
+    plugins.push(
+        new GenerateConfigWebpackPlugin({
+            // 插件选项配置
+            projectName: packageJSON.name,
+            env: argv.mode,
+
+        }, {
+            outDir: `target/${argv.mode}/${packageJSON.name}`
         })
     )
 }
@@ -35,7 +40,7 @@ module.exports = {
             '@': path.resolve(__dirname, 'src'),
         },
         plugins,
-        configure: (webpackConfig: any, {env, paths, mode} : any) => {
+        configure: (webpackConfig: any, {env, paths, mode}: any) => {
             console.log("argv", argv.mode)
             console.log("env", env)
             let base = null;
@@ -50,8 +55,8 @@ module.exports = {
                     base = "//static.ruubypay.com"
                     break;
             }
-            paths.appBuild = 'target' // 修改打包输出文件目录
-            if(base)webpackConfig.output.publicPath = base+"/"+packageJSON.name; // 修改静态资源路径
+            paths.appBuild = path.resolve(__dirname, `target/${argv.mode}/${packageJSON.name}`)// 修改打包输出文件目录
+            if (base) webpackConfig.output.publicPath = base + "/" + packageJSON.name; // 修改静态资源路径
             webpackConfig.output = {
                 ...webpackConfig.output,
                 clean: true,
@@ -69,5 +74,22 @@ module.exports = {
                 // pathRewrite: {'^/Advert': ''}
             }
         }
+    },
+    style: {
+        postcss: {
+            mode: 'extends',
+            loaderOptions: {
+                postcssOptions: {
+                    ident: 'postcss',
+                    plugins: [[
+                        pxtorem({
+                            rootValue: 75,//根据ui提供的效果图修改  看是1x还是2x
+                            propList: ['*'],
+                            minPixelValue: 3,
+                            exclude: /node_modules/i,
+                        })]],
+                },
+            },
+        },
     },
 }

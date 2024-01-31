@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
-
+import 'amfe-flexible';
 // eslint-disable-next-line
 const root = createRoot(document.getElementById('root')!) // createRoot(container!) if you use TypeScript
 
