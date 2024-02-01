@@ -20,7 +20,10 @@ type Config = {
 
 export const register = (config?: Config): void => {
     if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-        const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href)
+        /* eslint-disable-next-line */
+        const PUBLIC_URL:string = process.env.PUBLIC_URL+'';
+        const publicUrl = new URL(PUBLIC_URL,
+            window.location.href)
         if (publicUrl.origin !== window.location.origin) {
             return
         }

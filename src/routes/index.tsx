@@ -8,7 +8,7 @@
 
 import loadable from 'react-loadable'
 import loading from '@/components/PageLoadingTip'
-import { Router } from '@/interface/Router'
+import { Router } from '@/interfaces/Router'
 
 const router: Array<Router> = [
     {

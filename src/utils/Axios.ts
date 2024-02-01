@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {ApiBaseType} from '@/interface/ApiBaseType'
+import {ApiBaseType} from '@/interfaces/ApiBaseType'
 
 /**
  * @author dutianhe@ruubypay.com

@@ -2,6 +2,7 @@
 const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
 import packageJSON from "./package.json"
+import proxy from "./dev.proxy"
 
 const GenerateConfigWebpackPlugin = require('generate-deployment-config-webpack-plugin-by-react')
 const VConsolePlugin = require('vconsole-webpack-plugin')
@@ -67,13 +68,7 @@ module.exports = {
     },
     // 跨域配置
     devServer: {
-        proxy: {
-            '/Advert': {
-                target: 'https://apift-biz.ruubypay.com',
-                changeOrigin: true,
-                // pathRewrite: {'^/Advert': ''}
-            }
-        }
+        proxy
     },
     style: {
         postcss: {

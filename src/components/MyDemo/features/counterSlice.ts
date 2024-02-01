@@ -10,8 +10,8 @@ const initialState:InitialStateType = {
 }
 
 const counterSlice = createSlice({
-    // 当前store的唯一id
-    name: 'counterSlice',
+    // 当前store的唯一id 命名方式：页面名称+功能名称
+    name: 'home/counterSlice',
     // 默认值
     initialState,
     // 这里的 reducers 是react官方推荐的同步修改的方法，这里不可写异步操作

@@ -1,6 +1,6 @@
 import { combineReducers, configureStore, Reducer} from '@reduxjs/toolkit'
-import counterSlice from '@/components/MyDemo/features/counterSlice'
-import gainSlice from '@/store/features/gainSlice'
+import gainSlice from '@/pages/Home/features/gainSlice'
+import homePageSlice from "@/pages/Home/Home.export.rdc"
 
 
 /**
@@ -11,7 +11,7 @@ import gainSlice from '@/store/features/gainSlice'
  * @return Reducer
  */
 const rootReducer:Reducer = combineReducers({
-    counterSlice,
+    ...homePageSlice,
     gainSlice
 })
 

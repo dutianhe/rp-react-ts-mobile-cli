@@ -1,4 +1,4 @@
-import {StringKeyedObject} from "@/interface/ApiBaseType";
+import {StringKeyedObject} from "@/interfaces/ApiBaseType";
 
 /**
  * @author dutianhe@ruubypay.com
@@ -9,6 +9,5 @@ import {StringKeyedObject} from "@/interface/ApiBaseType";
  */
 
 export const API : StringKeyedObject= {
-    // "gain":"https://apift-biz.ruubypay.com/Advert/gain"
-    "gain":"/Advert/gain"
+    "gain":`${process.env.REACT_APP_BUSINESS_BASE_URL}/Advert/gain`
 }

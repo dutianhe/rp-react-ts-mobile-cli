@@ -25,6 +25,7 @@
     }
   },
   "include": [
-    "src"
+    "src",
+    "typed-assets.d.ts"//配置的.d.ts文件
   ]
 }

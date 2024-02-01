@@ -20,7 +20,7 @@ module.exports = {
             'warn',
             {
                 selector: 'default',
-                format: ['camelCase','PascalCase']
+                format: ['camelCase','PascalCase', 'UPPER_CASE']
             },
             {
                 selector: 'parameter',
@@ -56,9 +56,12 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'warn',
         '@typescript-eslint/no-explicit-any': ['off'],
         'eqeqeq': 'warn',
-        "new-cap":'warn',
         "no-redeclare":"error",
         "no-await-in-loop":"error",
+        'new-cap': [2, {
+            'newIsCap': true,
+            'capIsNew': false
+        }],//构造函数首字母大写
     },
     settings: {
         react: {

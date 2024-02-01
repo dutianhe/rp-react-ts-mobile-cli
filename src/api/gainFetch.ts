@@ -1,7 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit'
 import {Http} from '@/utils/Axios'
-import {API} from '@/store/async/api'
-import {BaseResponseData} from "@/interface/ApiBaseType";
+import {API} from '@/api/api'
+import {BaseResponseData} from "@/interfaces/ApiBaseType";
 
 
 /** 定义接口返回数据类型 **/
@@ -25,6 +25,7 @@ export const gainFetch = createAsyncThunk<ResponseData[], RequestData>(
     /**
      * 一个字符串类型的 action 名称，用于在 Redux 中识别该 action。
      * 该名称通常包含操作名称和状态
+     * 命名方式：fetch/接口名
      *  */
     'fetch/gain',
     /**

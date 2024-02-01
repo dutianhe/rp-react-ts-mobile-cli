@@ -1,32 +1,22 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import {connect} from "react-redux"
 import {addCounter} from "./features/counterSlice"
-import {gainFetch} from '@/store/async/gainFetch'
+import {gainFetch} from '@/api/gainFetch'
 import styles from "./MyDemo.module.sass"
-import checkImg from "@/assets/images/checked.png"
+import checkImg from "@/resources/images/checked.png"
 const MyDemo: React.FC = (props:any) => {
     const [date, setDate] = useState('')
 
-    const {gainData, loading, counter} = props;
-    const {addCounterHandler, getGainHandler} = props;
+    const { counter} = props;
+    const {addCounterHandler} = props;
     const num = 1;
-    /**
-     *  get api gain data demo
-     */
-    useEffect(() => {
-        getGainHandler();
-    }, [getGainHandler])
+
 
     return (
         <div className={styles.box}>
             <p>环境信息{process.env.REACT_APP_ENV}</p>
             <p>环境信息{process.env.REACT_APP_BASE_TEST_URL}</p>
-            <p> {loading ? <span>gain接口加载中...</span> : <span>gain接口加载完毕</span>}</p>
-            {(!loading && Boolean(gainData)) && (
-                <pre className={styles.pre}>
-                    {/*{JSON.stringify(gainData)}*/}
-                    {JSON.stringify(gainData, null, 2)}
-                </pre>)}
+
             <p>
                 <span> 计数器DEMO：{counter} </span>
                 <button onClick={() => addCounterHandler(num)}>加{num}</button>
