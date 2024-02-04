@@ -30,6 +30,7 @@ const MyDemo: React.FC = (props:any) => {
         </div>
     )
 }
+
 const mapStateToProps = (state:any) => {
     return {
         counter: state.counterSlice.counter,
@@ -40,12 +41,6 @@ const mapStateToProps = (state:any) => {
 const mapDispatchToProps = (dispatch: any) => ({
     addCounterHandler(num: number) {
         dispatch(addCounter(num))
-    },
-
-    getGainHandler() {
-        dispatch(gainFetch({
-            placeIds: "140"
-        }) )
     },
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MyDemo)

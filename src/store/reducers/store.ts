@@ -1,5 +1,4 @@
 import { combineReducers, configureStore, Reducer} from '@reduxjs/toolkit'
-import gainSlice from '@/pages/Home/features/gainSlice'
 import homePageSlice from "@/pages/Home/Home.export.rdc"
 
 
@@ -12,7 +11,6 @@ import homePageSlice from "@/pages/Home/Home.export.rdc"
  */
 const rootReducer:Reducer = combineReducers({
     ...homePageSlice,
-    gainSlice
 })
 
 

@@ -1,4 +1,5 @@
 import counterSlice from '@/components/MyDemo/features/counterSlice'
+import gainSlice from './features/gainSlice'
 
 
 /**
@@ -9,5 +10,6 @@ import counterSlice from '@/components/MyDemo/features/counterSlice'
  * @return object
  */
 export default {
-    counterSlice
+    counterSlice,
+    gainSlice
 }
