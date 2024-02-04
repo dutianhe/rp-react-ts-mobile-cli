@@ -15,6 +15,8 @@ react-router-dom 应用的路由器
 flexible 移动端自适应方案
 axios 基于 promise 的 HTTP 库
 vconsole 移动端调试利器
+sa-sdk-javascript 神策埋点
+rpjssdk 如易行内部jssdk
 ```
 <br />
 

@@ -32,6 +32,8 @@
     "react-scripts": "5.0.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
+    "rpjssdk": "^1.0.28",
+    "sa-sdk-javascript": "^1.26.5",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2"
   },
