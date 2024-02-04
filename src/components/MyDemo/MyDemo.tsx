@@ -1,7 +1,6 @@
 import React, { useState} from 'react'
 import {connect} from "react-redux"
 import {addCounter} from "./features/counterSlice"
-import {gainFetch} from '@/api/gainFetch'
 import styles from "./MyDemo.module.sass"
 import checkImg from "@/resources/images/checked.png"
 const MyDemo: React.FC = (props:any) => {
