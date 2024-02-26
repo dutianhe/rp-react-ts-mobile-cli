@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 import NotFoundPage from './pages/NotFoundPage'
 import './styles/main.sass'
 import router from './routes'
