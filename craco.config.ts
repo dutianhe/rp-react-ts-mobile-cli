@@ -57,7 +57,7 @@ module.exports = {
                     break;
             }
             paths.appBuild = path.resolve(__dirname, `target/${argv.mode}/${packageJSON.name}`)// 修改打包输出文件目录
-            if (base) webpackConfig.output.publicPath = base + "/" + packageJSON.name; // 修改静态资源路径
+            if (base) webpackConfig.output.publicPath = base + "/" + packageJSON.name+"/"; // 修改静态资源路径
             webpackConfig.output = {
                 ...webpackConfig.output,
                 clean: true,
