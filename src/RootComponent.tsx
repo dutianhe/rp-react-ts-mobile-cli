@@ -8,6 +8,7 @@ const RootComponent: React.FC = () => {
         <Router>
             <Routes>
                 <Route path="*" element={<NotFoundPage />} />
+
                 {
                     router.map((item, i) => {
                         return (
