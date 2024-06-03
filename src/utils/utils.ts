@@ -1,4 +1,4 @@
-
+import rp from 'rpjssdk'
 type DynamicObject = Record<string, string>;
 // 获取url参数
 export function getParams(URL :string = window.location.href) {
@@ -40,3 +40,34 @@ export function judgeCurVersion() {
   return version;
 }
 
+
+export function setNavigationBarHidden() {
+  // eslint-disable-next-line
+  rp.setNavigationBarHidden({
+    isShow: false,
+    hidden: true
+  })
+}
+
+
+export function exitBrowser() {
+  // eslint-disable-next-line
+  rp.exitBrowser()
+}
+
+
+/** 获取用户userId **/
+export async function getUserId(): Promise<string> {
+  if (!browser.versions.yitongxing) return Promise.resolve('')
+  try {
+    const {userId} = await rp.getUserId();
+    return Promise.resolve(userId)
+  } catch (err:any) {
+    const {errorCode} = err;
+    if (errorCode && errorCode.toString() === "2001") {
+      const {userId} = await rp.goLogin();
+      return Promise.resolve(userId)
+    }
+    return Promise.reject(err)
+  }
+}

@@ -61,4 +61,19 @@ export const Http = {
     get: ({url, data}: ApiBaseType): Promise<any> => customAxios.get(url, data),
 }
 
+/**
+ * @author <liuyi@ruubypay.com>
+ * @date 2024-03-22 19:21:15
+ * @description  rpjssdk 数据请求封装 适配app
+ * @param params
+ * @return Promise
+ */
+export const rpRequest = async (params: { url: string, method?: string, data?: object, tokenType?: number }) => request({
+    url: params.url,
+    method: params.method || 'post', //支持 GET POST
+    tokenType: params.tokenType || 2, // 0不添加公共参数, 1默认密钥计算mac, 2用户密钥计算mac
+    arguments: params.data,
+})
+
+
 export default customAxios
