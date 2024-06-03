@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "start": "craco start",
-    "build:debug": "cross-env REACT_APP_ENV=debug craco build --mode debug",
-    "build:test": "cross-env REACT_APP_ENV=test craco build --mode test",
-    "build:release": "cross-env REACT_APP_ENV=release craco build --mode release",
+    "build:debug": "env-cmd -f .env.debug cross-env REACT_APP_ENV=debug craco build --mode debug",
+    "build:test": "env-cmd -f .env.test cross-env REACT_APP_ENV=test craco build --mode test",
+    "build:release": "env-cmd -f .env.release cross-env REACT_APP_ENV=release craco build --mode release",
     "push:dev": "npm run build:debug && node push.dev.ts",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -54,6 +54,7 @@
     "@types/react-redux": "^7.1.26",
     "auto-deployment-web": "^1.0.5",
     "cross-env": "^7.0.3",
+    "env-cmd": "^10.1.0",
     "generate-deployment-config-webpack-plugin-by-react": "^1.0.0",
     "typescript": "^5.2.2",
     "vconsole-webpack-plugin": "^1.8.0"

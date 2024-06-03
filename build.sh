@@ -18,6 +18,8 @@ rm -rf target
   yarn run build:release
   yarn run build:test
   yarn run build:debug
-
+rm -rf ./target/debug/meituanCabinet/asset-manifest.json
+rm -rf ./target/test/meituanCabinet/asset-manifest.json
+rm -rf ./target/release/meituanCabinet/asset-manifest.json
 #echo "\n"
 #echo "--- build success!!! ---"
